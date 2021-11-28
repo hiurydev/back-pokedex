@@ -1,9 +1,5 @@
 package com.senac.devweb.api.admin.pokedex.habilidade;
 
-import com.senac.devweb.api.admin.pokedex.pokemon.Pokemon;
-import com.senac.devweb.api.admin.pokedex.pokemon.PokemonRepresentation;
-import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
-import com.senac.devweb.api.admin.pokedex.vantagem.Vantagem;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -18,7 +14,6 @@ public interface HabilidadeRepresentation {
     @Getter
     @Setter
     class CreateOrUpdate {
-
         @NotNull(message = "O pokemon é obrigatório")
         private Integer pokemon;
 
@@ -37,14 +32,12 @@ public interface HabilidadeRepresentation {
         private Integer id;
         private String nome;
         private String descricao;
-        private PokemonRepresentation.Detail pokemon;
 
         public static HabilidadeRepresentation.Detail from(Habilidade habilidade) {
             return HabilidadeRepresentation.Detail.builder()
                     .id(habilidade.getId())
                     .nome(habilidade.getNome())
                     .descricao(habilidade.getDescricao())
-                    .pokemon(PokemonRepresentation.Detail.from(habilidade.getPokemon()))
                     .build();
         }
     }
@@ -57,14 +50,12 @@ public interface HabilidadeRepresentation {
         private Integer id;
         private String nome;
         private String descricao;
-        private PokemonRepresentation.Detail pokemon;
 
         private static HabilidadeRepresentation.Lista from(Habilidade habilidade) {
             return HabilidadeRepresentation.Lista.builder()
                     .id(habilidade.getId())
                     .nome(habilidade.getNome())
                     .descricao(habilidade.getDescricao())
-                    .pokemon(PokemonRepresentation.Detail.from(habilidade.getPokemon()))
                     .build();
         }
 

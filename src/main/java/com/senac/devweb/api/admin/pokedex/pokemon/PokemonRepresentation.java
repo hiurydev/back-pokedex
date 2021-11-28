@@ -65,8 +65,7 @@ public interface PokemonRepresentation {
         private String nome;
         private Pokemon.Porte porte;
         private TipoPokemon tipoPokemon;
-        private Vantagem vantagem;
-        private Habilidade habilidade;
+        private List<Vantagem> vantagens;
 
         private static Lista from(Pokemon pokemon) {
             return Lista.builder()
@@ -74,6 +73,7 @@ public interface PokemonRepresentation {
                     .nome(pokemon.getNome())
                     .porte(pokemon.getPorte())
                     .tipoPokemon(pokemon.getTipoPokemon())
+                    .vantagens(pokemon.getVantagens())
                     .build();
         }
 
