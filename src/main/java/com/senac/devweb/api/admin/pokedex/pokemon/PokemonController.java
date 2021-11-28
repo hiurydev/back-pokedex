@@ -36,6 +36,24 @@ public class PokemonController {
                         this.pokemonService.save(createOrUpdate)));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<PokemonRepresentation.Detail> updatePokemon(
+            @PathVariable("id") Integer id,
+            @Valid @RequestBody PokemonRepresentation.CreateOrUpdate createOrUpdate) {
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(PokemonRepresentation.Detail.from(
+                                this.pokemonService.update(id, createOrUpdate)));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PokemonRepresentation.Detail> deletePokemon(
+            @PathVariable("id") Integer id) {
+
+        this.pokemonService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
     @GetMapping("/")
     public ResponseEntity<Paginacao> getAll(
             @QuerydslPredicate(root = Pokemon.class) Predicate filtroPokemon,
@@ -58,10 +76,9 @@ public class PokemonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PokemonRepresentation.Detail> getOneProduto(@PathVariable("id") Integer id) {
+    public ResponseEntity<PokemonRepresentation.Detail> getOnePokemon(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(PokemonRepresentation.Detail.from(this.pokemonService.getPokemon(id)));
     }
-
 
 
     // teste API

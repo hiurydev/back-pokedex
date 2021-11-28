@@ -25,6 +25,25 @@ public class PokemonService {
         return this.pokemonRepository.save(pokemon);
     }
 
+    public Pokemon update(Integer id, PokemonRepresentation.CreateOrUpdate createOrUpdate) {
+
+        Pokemon pokemon = this.getPokemon(id);
+
+        Pokemon newPokemon = pokemon.toBuilder()
+                .nome(createOrUpdate.getNome())
+                .porte(createOrUpdate.getPorte())
+                .tipoPokemon(createOrUpdate.getTipoPokemon())
+                .build();
+
+        return this.pokemonRepository.save(newPokemon);
+    }
+
+    public void delete(Integer id) {
+        Pokemon pokemon = this.getPokemon(id);
+
+        this.pokemonRepository.delete(pokemon);
+    }
+
     public List<Pokemon> getAllPokemon() {
         return this.pokemonRepository.findAll();
     }
