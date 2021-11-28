@@ -24,7 +24,7 @@ public class Habilidade {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_pokemon", referencedColumnName="i_pokemon")
+    @JoinColumn(name = "id_pokemon", referencedColumnName="id_pokemon")
     private Pokemon pokemon;
 
     @NotNull(message = "O campo nome não pode ser nulo")

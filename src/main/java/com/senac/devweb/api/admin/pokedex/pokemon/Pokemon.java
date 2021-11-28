@@ -25,7 +25,7 @@ public class Pokemon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="i_pokemon")
+    @Column(name="id_pokemon")
     private Integer id;
 
     @NotNull(message = "O campo nome não pode ser nulo")
