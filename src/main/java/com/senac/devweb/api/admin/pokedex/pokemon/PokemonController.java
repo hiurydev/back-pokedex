@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,6 +26,15 @@ public class PokemonController {
 
     private final PokemonService pokemonService;
     private final PokemonRepository pokemonRepository;
+
+    @PostMapping("/")
+    public ResponseEntity<PokemonRepresentation.Detail> createPokemon(
+            @Valid @RequestBody PokemonRepresentation.CreateOrUpdate createOrUpdate) {
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(PokemonRepresentation.Detail.from(
+                        this.pokemonService.save(createOrUpdate)));
+    }
 
     @GetMapping("/")
     public ResponseEntity<Paginacao> getAll(
@@ -51,6 +61,8 @@ public class PokemonController {
     public ResponseEntity<PokemonRepresentation.Detail> getOneProduto(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(PokemonRepresentation.Detail.from(this.pokemonService.getPokemon(id)));
     }
+
+
 
     // teste API
     @GetMapping("/get")
