@@ -52,6 +52,6 @@ public class PokemonService {
         BooleanExpression filter =
                 com.senac.devweb.api.admin.pokedex.pokemon.QPokemon.pokemon.id.eq(id);
         return this.pokemonRepository.findOne(filter)
-                .orElseThrow(() -> new NotFoundException("Pokemon não encontrada."));
+                .orElseThrow(() -> new NotFoundException("Pokemon não encontrado."));
     }
 }
