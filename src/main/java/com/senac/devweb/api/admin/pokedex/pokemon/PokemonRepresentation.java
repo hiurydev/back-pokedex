@@ -1,8 +1,7 @@
 package com.senac.devweb.api.admin.pokedex.pokemon;
 
-//import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
-import com.senac.devweb.api.admin.pokedex.habilidade.Habilidade;
 import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
+import com.senac.devweb.api.admin.pokedex.habilidade.Habilidade;
 import com.senac.devweb.api.admin.pokedex.vantagem.Vantagem;
 import lombok.Builder;
 import lombok.Data;
@@ -53,7 +52,7 @@ public interface PokemonRepresentation {
         private Integer id;
         private String nome;
         private Pokemon.Porte porte;
-//        private TipoPokemon tipoPokemon;
+        private TipoPokemon tipoPokemon;
         private Vantagem vantagem;
         private Habilidade habilidade;
 
@@ -62,6 +61,7 @@ public interface PokemonRepresentation {
                     .id(pokemon.getId())
                     .nome(pokemon.getNome())
                     .porte(pokemon.getPorte())
+                    .tipoPokemon(pokemon.getTipoPokemon())
                     .build();
         }
 

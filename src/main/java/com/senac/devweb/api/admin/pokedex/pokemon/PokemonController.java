@@ -49,7 +49,7 @@ public class PokemonController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PokemonRepresentation.Detail> getOneProduto(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(PokemonRepresentation.Detail.from(this.pokemonService.getProduto(id)));
+        return ResponseEntity.ok(PokemonRepresentation.Detail.from(this.pokemonService.getPokemon(id)));
     }
 
     // teste API

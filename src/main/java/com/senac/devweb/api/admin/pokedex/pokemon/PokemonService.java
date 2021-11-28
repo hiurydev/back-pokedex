@@ -17,7 +17,7 @@ public class PokemonService {
         return this.pokemonRepository.findAll();
     }
 
-    public Pokemon getProduto(Integer id) {
+    public Pokemon getPokemon(Integer id) {
         BooleanExpression filter =
                 com.senac.devweb.api.admin.pokedex.pokemon.QPokemon.pokemon.id.eq(id);
         return this.pokemonRepository.findOne(filter)

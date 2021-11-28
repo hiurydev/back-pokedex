@@ -1,7 +1,7 @@
 package com.senac.devweb.api.admin.pokedex.pokemon;
 
 import com.senac.devweb.api.admin.pokedex.habilidade.Habilidade;
-//import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
+import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
 import com.senac.devweb.api.admin.pokedex.vantagem.Vantagem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,14 +33,14 @@ public class Pokemon {
     @Column(name="nome")
     private String nome;
 
-    @NotNull(message = "O campo status não pode ser nulo")
+    @NotNull(message = "O campo porte não pode ser nulo")
     @Column(name="porte")
     private Porte porte;
 
-//    @NotNull(message = "O campo status não pode ser nulo")
-//    @Column(name="tipo")
-//    @Enumerated(EnumType.STRING)
-//    private TipoPokemon tipoPokemon;
+    @NotNull(message = "O campo tipo não pode ser nulo")
+    @Column(name="tipo")
+    @Enumerated(EnumType.STRING)
+    private TipoPokemon tipoPokemon;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pokemon", orphanRemoval = true)
     private List<Vantagem> vantagens  = new ArrayList<>();
