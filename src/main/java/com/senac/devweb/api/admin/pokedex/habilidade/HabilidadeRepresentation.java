@@ -40,6 +40,12 @@ public interface HabilidadeRepresentation {
                     .descricao(habilidade.getDescricao())
                     .build();
         }
+
+        public static List<HabilidadeRepresentation.Detail> from(List<Habilidade> habilidades) {
+            return habilidades.stream()
+                    .map(HabilidadeRepresentation.Detail::from)
+                    .collect(Collectors.toList());
+        }
     }
 
     @Data

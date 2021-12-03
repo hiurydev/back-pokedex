@@ -54,7 +54,7 @@ public class HabilidadeService {
 
     public Habilidade getHabilidade(Integer id) {
         BooleanExpression filter =
-                QHabilidade.habilidade.id.eq(id);
+                com.senac.devweb.api.admin.pokedex.habilidade.QHabilidade.habilidade.id.eq(id);
         return this.habilidadeRepository.findOne(filter)
                 .orElseThrow(() -> new NotFoundException("Habilidade não encontrada."));
     }

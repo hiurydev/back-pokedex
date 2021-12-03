@@ -45,6 +45,11 @@ public interface VantagemRepresentation {
                     .imune(vantagem.getImune())
                     .build();
         }
+        public static List<Detail> from(List<Vantagem> vantagens) {
+            return vantagens.stream()
+                    .map(VantagemRepresentation.Detail::from)
+                    .collect(Collectors.toList());
+        }
     }
 
     @Data
