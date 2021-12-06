@@ -1,5 +1,8 @@
 package com.senac.devweb.api.admin.pokedex.habilidade;
 
+import com.senac.devweb.api.admin.pokedex.pokemon.Pokemon;
+import com.senac.devweb.api.admin.pokedex.pokemon.PokemonRepresentation;
+import com.senac.devweb.api.admin.pokedex.vantagem.VantagemRepresentation;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -56,12 +59,14 @@ public interface HabilidadeRepresentation {
         private Integer id;
         private String nome;
         private String descricao;
+        private PokemonRepresentation.Detail pokemon;
 
         private static HabilidadeRepresentation.Lista from(Habilidade habilidade) {
             return HabilidadeRepresentation.Lista.builder()
                     .id(habilidade.getId())
                     .nome(habilidade.getNome())
                     .descricao(habilidade.getDescricao())
+                    .pokemon(PokemonRepresentation.Detail.from(habilidade.getPokemon()))
                     .build();
         }
 

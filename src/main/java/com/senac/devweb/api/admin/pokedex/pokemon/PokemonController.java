@@ -80,6 +80,12 @@ public class PokemonController {
         return ResponseEntity.ok(PokemonRepresentation.Detail.from(this.pokemonService.getPokemon(id)));
     }
 
+    @GetMapping("/full-pokemon")
+    public ResponseEntity<List<PokemonRepresentation.Lista>> getAll(){
+        List<Pokemon> all = this.pokemonRepository.findAll();
+
+        return ResponseEntity.ok(PokemonRepresentation.Lista.from(all));
+    }
 
     // teste API
     @GetMapping("/get")
