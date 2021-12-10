@@ -35,12 +35,14 @@ public interface HabilidadeRepresentation {
         private Integer id;
         private String nome;
         private String descricao;
+        private Integer idPokemon;
 
         public static HabilidadeRepresentation.Detail from(Habilidade habilidade) {
             return HabilidadeRepresentation.Detail.builder()
                     .id(habilidade.getId())
                     .nome(habilidade.getNome())
                     .descricao(habilidade.getDescricao())
+                    .idPokemon(habilidade.getPokemon().getId())
                     .build();
         }
 

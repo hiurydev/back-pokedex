@@ -1,5 +1,6 @@
 package com.senac.devweb.api.admin.pokedex.vantagem;
 
+import com.senac.devweb.api.admin.pokedex.pokemon.PokemonRepresentation;
 import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
 import lombok.Builder;
 import lombok.Data;
@@ -37,12 +38,16 @@ public interface VantagemRepresentation {
         private Integer id;
         private Boolean pro;
         private Boolean imune;
+        private TipoPokemon tipoPokemon;
+        private Integer idPokemon;
 
         public static VantagemRepresentation.Detail from(Vantagem vantagem) {
             return Detail.builder()
                     .id(vantagem.getId())
                     .pro(vantagem.getPro())
                     .imune(vantagem.getImune())
+                    .tipoPokemon(vantagem.getTipoPokemon())
+                    .idPokemon(vantagem.getPokemon().getId())
                     .build();
         }
         public static List<Detail> from(List<Vantagem> vantagens) {
@@ -60,12 +65,16 @@ public interface VantagemRepresentation {
         private Integer id;
         private Boolean pro;
         private Boolean imune;
+        private TipoPokemon tipoPokemon;
+        private PokemonRepresentation.Detail pokemon;
 
         private static VantagemRepresentation.Lista from(Vantagem vantagem) {
             return VantagemRepresentation.Lista.builder()
                     .id(vantagem.getId())
                     .pro(vantagem.getPro())
                     .imune(vantagem.getImune())
+                    .tipoPokemon(vantagem.getTipoPokemon())
+                    .pokemon(PokemonRepresentation.Detail.from(vantagem.getPokemon()))
                     .build();
         }
 
